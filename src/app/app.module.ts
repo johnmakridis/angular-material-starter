@@ -17,6 +17,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomeComponent } from './components/home/home.component';
 import { Page1Component } from './components/page1/page1.component';
 import { Page2Component } from './components/page2/page2.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -29,15 +31,16 @@ import { Page2Component } from './components/page2/page2.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
-platformBrowserDynamic().bootstrapModule(AppModule);
+// platformBrowserDynamic().bootstrapModule(AppModule);
